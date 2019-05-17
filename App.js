@@ -1,55 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import * as Expo from 'expo';
-async function getToken() {
-  // Remote notifications do not work in simulators, only on device
-  console.log(Expo.Constants.isDevice)
-  if (!Expo.Constants.isDevice) {
-    return;
-  }
-  let { status } = await Expo.Permissions.askAsync(
-      Expo.Permissions.NOTIFICATIONS,
-  );
-  console.log(status)
-  if (status !== 'granted') {
-    return;
-  }
-  let value = await Expo.Notifications.getExpoPushTokenAsync();
-  alert(value);
-  console.log('11111111111111111111');
-  console.log(value);
-  /// Send this to a server
-  return fetch('http://192.168.196.75:4000/send', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      token: value,
-      name: 'paultest'
-    }),
-  });
-}
-export default class App extends React.Component {
-  componentDidMount() {
-    getToken()
-  }
+import {createSwitchNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+import HomeScreen from './screens/HomeScreen'
+import DetailScreen from './screens/DetailScreen'
+import LoginScreen from './screens/LoginScreen'
+import ApiTest from './screens/apiTest'
+import AuthLoadingScreen from './screens/AuthLoadingScreen'
+import Camera from './components/customizeCamera'
+import ImgPicker from './components/imgPicker'
+import Post from './components/blog/Post'
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Hello Paul</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const AppStack = createStackNavigator({
+    Home: HomeScreen,
+    Details: DetailScreen,
+    Camera: Camera,
+    ImgPicker: ImgPicker,
+    ApiTest: ApiTest,
+    Post: Post
+}, {headerMode: 'none'});
+const AuthStack = createStackNavigator({ SignIn: LoginScreen });
+const AppNavigator = createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+      App: AppStack,
+    Auth: AuthStack,
+},
+{
+  initialRouteName: 'AuthLoading',
 });
+
+const app = createAppContainer(AppNavigator);
+
+export default app;
