@@ -1,4 +1,8 @@
-import {createSwitchNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 import HomeScreen from './screens/HomeScreen'
 import DetailScreen from './screens/DetailScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -9,20 +13,23 @@ import ImgPicker from './components/imgPicker'
 import Post from './components/blog/Post'
 
 const AppStack = createStackNavigator({
-    Home: HomeScreen,
-    Details: DetailScreen,
-    Camera: Camera,
-    ImgPicker: ImgPicker,
-    ApiTest: ApiTest,
-    Post: Post
-}, {headerMode: 'none'});
-const AuthStack = createStackNavigator({ SignIn: LoginScreen });
+  Home: HomeScreen,
+  Details: DetailScreen,
+  Camera: Camera,
+  ImgPicker: ImgPicker,
+  ApiTest: ApiTest,
+  Post: Post
+}, {
+  headerMode: 'none'
+});
+const AuthStack = createStackNavigator({
+  SignIn: LoginScreen
+});
 const AppNavigator = createSwitchNavigator({
   AuthLoading: AuthLoadingScreen,
-      App: AppStack,
-    Auth: AuthStack,
-},
-{
+  App: AppStack,
+  Auth: AuthStack,
+}, {
   initialRouteName: 'AuthLoading',
 });
 

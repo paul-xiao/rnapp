@@ -1,14 +1,26 @@
 import React from 'react'
-import {View, TextInput, StyleSheet, Button, Image} from "react-native";
+import {View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity} from "react-native";
 import { Container } from "native-base";
 import Header from '../Header'
 import {ImagePicker, Permissions} from "expo";
 
 const styles = StyleSheet.create({
+    postBox: {
+        borderColor: '#f2f2f2',
+        borderWidth: 1,
+        marginBottom: 20
+    },
+    imageBox: {
+        height: 200,
+        width: 300,
+        marginVertical: 15,
+        alignItems: 'flex-start'
+    },
     textBox: {
         borderColor: '#f2f2f2',
         borderWidth: 1,
-        height: 200,
+        height: 50,
+        lineHeight: 50,
         width: 300,
         marginVertical: 15,
         alignItems: 'flex-start'
@@ -17,6 +29,19 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    button: {
+        backgroundColor: 'red',
+        color: '#FFF',
+        marginTop: 15,
+        borderRadius: 50,
+        height: 50,
+        width: 250,
+    },
+    buttonText: {
+      color: "#FFF",
+      textAlign: 'center',
+      lineHeight: 50
     }
 });
 
@@ -51,7 +76,9 @@ export default class Post extends React.Component {
             this.setState({photo: result})
         }
     }
-
+      onSubmit() {
+          alert(1)
+      }
     render() {
         const nav = () => {
             this.props.navigation.navigate('Home');
@@ -61,9 +88,10 @@ export default class Post extends React.Component {
         const ImgView = () => {
             if(!photo) return;
             return (
-                    <View>
-                        <Image style={styles.textBox} source={{uri: photo.uri}}/>
+                    <View style={styles.postBox}>
+                        <Image style={styles.imageBox} source={{uri: photo.uri}}/>
                         <TextInput
+                            style={styles.textBox}
                             onChangeText={(text) => this.setState({text})}
                             value={text}/>
                     </View>
@@ -71,9 +99,14 @@ export default class Post extends React.Component {
         };
         return (
             <Container>
-                <Header title="Post" left={{title: 'Return', nav: nav}}/>
+                <Header title="Post" right={{title: 'Return', nav: nav}} />
                 <View style={styles.content}>
-                    {ImgView}
+                    {ImgView()}
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={this.onSubmit.bind(this)}>
+                        <Text style={styles.buttonText}> Submit </Text>
+                    </TouchableOpacity>
                     <Button onPress={this._takePicture.bind(this)} title="take a picture"/>
                     <Button onPress={this._choosePicture.bind(this)} title="choose from photo"/>
                 </View>

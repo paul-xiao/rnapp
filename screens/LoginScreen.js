@@ -58,7 +58,7 @@ class LoginScreen extends React.Component {
     onLogin() {
         const { username, password } = this.state;
         const { navigate } = this.props.navigation;
-        fetch('http://192.168.196.75:4000/signin',
+        fetch('http://192.168.196.75:8080/signin',
             {
                 method: 'post',
                 body: JSON.stringify({username, password}),
@@ -67,8 +67,7 @@ class LoginScreen extends React.Component {
                 })
           }).then((response) => {
             response.json().then(data => {
-                if (data.success) {
-                    console.log(data);
+                if (data.status) {
                     this._signInAsync(data.token)
                 } else {
                     Alert.alert('message', data.msg)
