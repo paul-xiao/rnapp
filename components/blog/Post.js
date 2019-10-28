@@ -76,9 +76,25 @@ export default class Post extends React.Component {
             this.setState({photo: result})
         }
     }
-      onSubmit() {
-          alert(1)
-      }
+    onSubmit() {
+        console.log(this.state.photo)
+        console.log(this.state.text)
+        let formData = new FormData()
+        formData.append('photo', this.state.photo)
+        formData.append('desc', this.state.text)
+        fetch('http://192.168.196.75:8080/savepost',
+            {
+                method: 'post',
+                body: formData,
+                headers: { 'Content-Type': 'multipart/form-data' }
+          }).then((response) => {
+            response.json().then(data => {
+               console.log(data.message)
+            })
+        }).catch(err => {
+            console.log(err)
+        });
+    }
     render() {
         const nav = () => {
             this.props.navigation.navigate('Home');

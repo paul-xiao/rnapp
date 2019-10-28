@@ -22,13 +22,14 @@ export default class BlogItem extends React.Component {
     constructor(props){
         super(props);
     }
+    
     _renderItem({item, index}) {
         return (
             <View style={style.container}>
                 <View style={style.img}>
-                    <Image style={style.img} source={require("../../assets/x.png")} />
+                    <Image style={style.img} source={{uri: item.url}} />
                 </View>
-                <View style={style.content}><Text>{item.name} {index}</Text></View>
+                <View style={style.content}><Text>{item.desc} {item.contentType}</Text></View>
             </View>
         )
     }

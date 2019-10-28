@@ -5,6 +5,34 @@ import AppFooter from '../components/Footer';
 import AppHeader from '../components/Header';
 import BlogItem from '../components/blog/Item';
 export default class HomeScreen extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            postList: {}
+        };
+        this.getPostList = this.getPostList.bind(this)
+    }
+
+    getPostList(){
+        fetch('http://192.168.196.75:8080/getpost',
+        {
+            method: 'get'
+      }).then((response) => {
+        response.json().then(data => {
+            console.log(data)
+            this.setState({
+                postList: data
+            })
+        })
+    }).catch(err => {
+        console.log(err)
+    });
+    }
+    componentDidMount(){
+        this.getPostList()
+    }
     render() {
         const nav = () => {
             this.props.navigation.navigate('Post');
@@ -15,11 +43,12 @@ export default class HomeScreen extends Component {
             this.props.navigation.navigate('Auth');
     
         }
+        const { postList } = this.state
         return (
             <Container>
                 <AppHeader title="Home" right={{title: 'Post', nav: nav}} left={{title: 'Logout', nav: _Logout}}/>
                 <Content>
-                    <BlogItem data={[{name: 'paul1111'},{name: 'paul'}]}/>
+                    <BlogItem data={postList}/>
                 </Content>
                 <AppFooter />
             </Container>
