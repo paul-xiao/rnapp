@@ -1,7 +1,7 @@
 export const COLORS = {
     txtColor: '#757575',
     defult: '#ccc',
-    primary: '#DFEFFS'
+    primary: '#ddd'
 }
 
 export const PADDING = {

@@ -13,19 +13,21 @@ export default class ModalExample extends Component {
 
   render() {
     return (
-      <View style={commonStyles.flexCenter}>
+      <View>
         <Modal
           animationType="slide"
           transparent={false}
           visible={this.state.modalVisible}
+          style={commonStyles.model}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
           }}>
-          <View style={{marginTop: 22}}>
-            <View>
+          <View style={commonStyles.modelContainer}>
+            <View style={commonStyles.modelContent}>
               <Text>Hello World!</Text>
 
               <TouchableHighlight
+                style={commonStyles.modelOptions}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>

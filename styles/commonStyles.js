@@ -26,4 +26,34 @@ export default StyleSheet.create({
     backgroundColor: COLORS.primary,
     padding: 10
   },
+  modal: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    opacity: 0.2,
+    backgroundColor: 'black',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  modalContent: {
+    position:'relative',
+    width: 270,
+    height: 300,
+    flexDirection: "column",
+    borderRadius: 13,
+    backgroundColor: COLORS.primary,
+    overflow: "hidden",
+  },
+  modalOptions: {
+    alignItems: 'center',
+    backgroundColor: COLORS.defult,
+    padding: 10
+  }
 });
