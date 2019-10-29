@@ -4,6 +4,7 @@ import { Container, Header, Left, Body, Title, Content, List, ListItem, Footer, 
 import AppFooter from '../components/Footer';
 import AppHeader from '../components/Header';
 import BlogItem from '../components/blog/Item';
+import FeatureList from '../components/feature_test/FeatureList';
 export default class HomeScreen extends Component {
 
     constructor(props) {
@@ -21,7 +22,6 @@ export default class HomeScreen extends Component {
             method: 'get'
       }).then((response) => {
         response.json().then(data => {
-            console.log(data)
             this.setState({
                 postList: data
             })
@@ -37,6 +37,10 @@ export default class HomeScreen extends Component {
         const nav = () => {
             this.props.navigation.navigate('Post');
         };
+        const navigate = (link) => {
+            console.log(link)
+            this.props.navigation.navigate(link);
+        };
         const _Logout = async() => {
 
             await AsyncStorage.removeItem('userToken');
@@ -48,9 +52,8 @@ export default class HomeScreen extends Component {
             <Container>
                 <AppHeader title="Home" right={{title: 'Post', nav: nav}} left={{title: 'Logout', nav: _Logout}}/>
                 <Content>
-                    <BlogItem data={postList}/>
+                    <FeatureList navigate={navigate}/>
                 </Content>
-                <AppFooter />
             </Container>
         );
     }
