@@ -9,3 +9,10 @@
     - CI/CD
 - design
 - publish
+
+
+
+# pending issues
+
+- navigator push
+- usefull components

@@ -10,30 +10,35 @@ export default class ModalExample extends Component {
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
-
+  componentDidMount(){
+    console.log(commonStyles.modal)
+  }
   render() {
     return (
-      <View>
+      <View style={commonStyles.modal}> 
         <Modal
           animationType="slide"
           transparent={false}
           visible={this.state.modalVisible}
-          style={commonStyles.model}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
           }}>
-          <View style={commonStyles.modelContainer}>
-            <View style={commonStyles.modelContent}>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                style={commonStyles.modelOptions}
+          <View style={commonStyles.modalContainer}>
+            <View style={commonStyles.modalContent}>
+              <Text style={commonStyles.modalContentTxt}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Text>      
+            </View>
+            <TouchableHighlight
+                style={commonStyles.modalOptions}
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}>
                 <Text>Hide Modal</Text>
               </TouchableHighlight>
-            </View>
           </View>
         </Modal>
 

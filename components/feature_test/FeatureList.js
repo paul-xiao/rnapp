@@ -12,6 +12,7 @@ import {
     Text,
     Icon
 } from "native-base";
+import RefreshControlTest from './RefreshControlTest'
 
 const styles = StyleSheet.create({
     container: {
@@ -69,16 +70,35 @@ const featrueList = [{
         name: 'Modal',
         link: 'ModalTest',
         icon: 'medal'
+    },
+    {
+        name: 'Picker',
+        link: 'PickerTest',
+        icon: 'easel'
+    },
+    {
+        name: 'ProgressView',
+        link: 'ProgressViewTest',
+        icon: 'disc'
+    },
+    {
+        name: 'RefreshControl',
+        link: 'RefreshControlTest',
+        icon: 'refresh'
     }
 ]
 export default class FeatureList extends React.Component {
         render() {
-            const { navigate } = this.props;
+            const { navigator } = this.props;
             return (
                 <FlatList
                 data={featrueList}
                 renderItem={({ item }) => (
-                  <TouchableOpacity style={styles.layout} onPress={() => navigate(item.link)}>
+                  <TouchableOpacity style={styles.layout} onPress={() => navigator.push({
+                      title:'test',
+                      index: 0,
+                      component:RefreshControlTest
+                  })}>
                     <View >
                        <Icon name={item.icon} style={styles.text} />
                     </View>

@@ -27,31 +27,35 @@ export default StyleSheet.create({
     padding: 10
   },
   modal: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    opacity: 0.2,
-    backgroundColor: 'black',
-  },
-  modalContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 0.3,
+    backgroundColor: 'black',
+  },
   modalContent: {
-    position:'relative',
     width: 270,
-    height: 300,
-    flexDirection: "column",
-    borderRadius: 13,
+    padding: 15,
+    borderRadius: 15,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     backgroundColor: COLORS.primary,
     overflow: "hidden",
+    textalign: 'center'
+  },
+  modalContentTxt: {
+    color: COLORS.white
   },
   modalOptions: {
+    width: 270,
+    borderRadius: 15,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     alignItems: 'center',
     backgroundColor: COLORS.defult,
     padding: 10

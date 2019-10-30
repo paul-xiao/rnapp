@@ -21,6 +21,9 @@ import InputAccessoryViewTest from './components/feature_test/InputAccessoryView
 import KeyboardAvoidingViewTest from './components/feature_test/KeyboardAvoidingViewTest'
 import MaskedViewTest from './components/feature_test/MaskedViewTest'
 import ModalTest from './components/feature_test/ModalTest'
+import PickerTest from './components/feature_test/PickerTest'
+import ProgressViewTest from './components/feature_test/UIProgressViewTest'
+import RefreshControlTest from './components/feature_test/RefreshControlTest'
 
 const AppStack = createStackNavigator({
   Home: HomeScreen,
@@ -38,6 +41,9 @@ const AppStack = createStackNavigator({
   KeyboardAvoidingViewTest: KeyboardAvoidingViewTest,
   MaskedViewTest: MaskedViewTest,
   ModalTest: ModalTest,
+  PickerTest: PickerTest,
+  ProgressViewTest: ProgressViewTest,
+  RefreshControlTest: RefreshControlTest,
   ViewTest: ViewTest
 }, {
   headerMode: 'none'

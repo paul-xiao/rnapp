@@ -1,7 +1,8 @@
 export const COLORS = {
     txtColor: '#757575',
+    white: '#FFF',
     defult: '#ccc',
-    primary: '#ddd'
+    primary: '#2e9ee1'
 }
 
 export const PADDING = {

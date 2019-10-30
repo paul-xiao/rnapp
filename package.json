@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",
-    "expo": "^32.0.6",
-    "expo-av": "^7.0.1",
+    "expo": "^33.0.0",
+    "expo-av": "~5.0.2",
     "firebase": "^6.1.1",
     "moment": "^2.24.0",
     "native-base": "^2.12.1",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-easy-grid": "^0.2.1",
     "react-navigation": "^3.9.1"
   },
