@@ -14,5 +14,5 @@
 
 # pending issues
 
-- navigator push
-- usefull components
+- featrues
+  - push notifications

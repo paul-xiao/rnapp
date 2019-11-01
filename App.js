@@ -6,10 +6,10 @@ import {
 import HomeScreen from './screens/HomeScreen'
 import DetailScreen from './screens/DetailScreen'
 import LoginScreen from './screens/LoginScreen'
-import ApiTest from './screens/apiTest'
+import ApiDemoScreen from './screens/ApiDemoScreen'
 import AuthLoadingScreen from './screens/AuthLoadingScreen'
-import Camera from './components/customizeCamera'
-import ImgPicker from './components/imgPicker'
+import Camera from './components/feature_test/customizeCamera'
+import ImgPicker from './components/feature_test/imgPicker'
 import Post from './components/blog/Post'
 import ViewTest from './components/feature_test/ViewTest'
 import ActivityIndicatorTest from './components/feature_test/ActivityIndicatorTest'
@@ -24,14 +24,9 @@ import ModalTest from './components/feature_test/ModalTest'
 import PickerTest from './components/feature_test/PickerTest'
 import ProgressViewTest from './components/feature_test/UIProgressViewTest'
 import RefreshControlTest from './components/feature_test/RefreshControlTest'
+import FlexLayoutTest from './components/feature_test/FlexLayoutTest'
 
-const AppStack = createStackNavigator({
-  Home: HomeScreen,
-  Details: DetailScreen,
-  Camera: Camera,
-  ImgPicker: ImgPicker,
-  ApiTest: ApiTest,
-  Post: Post,
+const apiDemoRoute = {
   ButtonTest: ButtonTest,
   ActivityIndicatorTest: ActivityIndicatorTest,
   DatePickerIosTest: DatePickerIosTest,
@@ -44,7 +39,23 @@ const AppStack = createStackNavigator({
   PickerTest: PickerTest,
   ProgressViewTest: ProgressViewTest,
   RefreshControlTest: RefreshControlTest,
-  ViewTest: ViewTest
+  FlexLayoutTest: FlexLayoutTest,
+  ViewTest: ViewTest,
+  Camera: Camera,
+  ImgPicker: ImgPicker,
+}
+
+import TodoApp from './components/todo'
+const AppDemo = {
+  TodoApp: TodoApp
+}
+const AppStack = createStackNavigator({
+  Home: TodoApp,
+  Details: DetailScreen,
+  Post: Post,
+  ApiDemoScreen: ApiDemoScreen,
+  ...apiDemoRoute,
+  ...AppDemo
 }, {
   headerMode: 'none'
 });

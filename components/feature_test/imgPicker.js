@@ -7,11 +7,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        flexDirection: 'column',
         justifyContent: 'center'
     },
     btn: {
-        flex: 1
+        margin: 15,
     }
 });
 

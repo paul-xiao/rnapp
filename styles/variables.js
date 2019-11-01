@@ -1,5 +1,6 @@
 export const COLORS = {
     txtColor: '#757575',
+    borderColor: '#727272',
     white: '#FFF',
     defult: '#ccc',
     primary: '#2e9ee1'

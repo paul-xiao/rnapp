@@ -1,18 +1,17 @@
 import React from 'react'
 import {
     StyleSheet,
-    Image,
+    ScrollView,
     FlatList,
-    Alert,
+    SafeAreaView,
     TouchableOpacity,
-    Button
+    SectionList
 } from 'react-native'
 import {
     View,
     Text,
     Icon
 } from "native-base";
-import RefreshControlTest from './RefreshControlTest'
 
 const styles = StyleSheet.create({
     container: {
@@ -20,9 +19,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    section: {
+      width: '100%',
+      padding: 15,
+      overflow: 'hidden'
+    }, 
     layout: {
-        flex: 1,
-        padding: 25,
+        width: '30%',
+        padding: 15,
         backgroundColor: 'steelblue',
         margin: 5,
         textAlign: 'center'
@@ -32,8 +36,20 @@ const styles = StyleSheet.create({
         color: '#FFF',
         textAlign: 'center'
     },
+    item: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+      },
+      header: {
+        fontSize: 32,
+        padding: 15,
+      },
+      title: {
+        fontSize: 24,
+      },
 })
-const featrueList = [{
+const UiFeatures = [{
         name: 'ActivityIndicator',
         link: 'ActivityIndicatorTest',
         icon: 'baseball'
@@ -85,31 +101,73 @@ const featrueList = [{
         name: 'RefreshControl',
         link: 'RefreshControlTest',
         icon: 'refresh'
+    },
+    {
+        name: 'FlexLayout',
+        link: 'FlexLayoutTest',
+        icon: 'refresh'
     }
 ]
-export default class FeatureList extends React.Component {
-        render() {
-            const { navigator } = this.props;
-            return (
-                <FlatList
-                data={featrueList}
-                renderItem={({ item }) => (
-                  <TouchableOpacity style={styles.layout} onPress={() => navigator.push({
-                      title:'test',
-                      index: 0,
-                      component:RefreshControlTest
-                  })}>
-                    <View >
-                       <Icon name={item.icon} style={styles.text} />
-                    </View>
-                    <Text style={styles.text} >{item.name}</Text>
-                  </TouchableOpacity>
-                )}
-                //Setting the number of column
-                numColumns={3}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            )
-        }
 
+const NativeFeatures = [
+    {
+        name: 'Camera',
+        link: 'Camera',
+        icon: 'camera'
+    },
+    {
+        name: 'ImgPicker',
+        link: 'ImgPicker',
+        icon: 'refresh'
+    }
+]
+const DATA = [{
+        title: 'UI API',
+        data: UiFeatures
+    },
+    {
+        title: 'Native API',
+        data: NativeFeatures
+    }
+];
+ 
+const Item = ({data, index, navigate}) => {
+    // data should be a array
+    
+        return index === 0 ? (
+           <View style={styles.section}>
+                <FlatList
+                    data={data}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity style={styles.layout} onPress={() => navigate(item.link)}>
+                        <View >
+                            <Icon name={item.icon} style={styles.text} />
+                        </View>
+                        <Text style={styles.text} >{item.name}</Text>
+                        </TouchableOpacity>
+                    )}
+                    //Setting the number of column
+                    numColumns={3}
+                    keyExtractor={(item, index) => index.toString()}
+                    />
+           </View>
+    ) : null
+}
+
+
+export default FeatureList = ({navigate}) => {
+    return (
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+          <SectionList
+            sections={DATA}
+            keyExtractor={(title, index) => title + index}
+            renderItem={({section, index}) =><Item data={section.data} index={index} navigate={navigate}/>}
+            renderSectionHeader={({ section: { title } }) => (
+              <Text style={styles.header}>{title}</Text>
+            )}
+          />
+          </ScrollView>
+        </SafeAreaView>
+      );
 }

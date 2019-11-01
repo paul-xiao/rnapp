@@ -9,7 +9,7 @@ import {
     Text,
     Container
 } from "native-base";
-import Header from '../Header'
+import Header from '../common/Header'
 const styles = StyleSheet.create({
     container: {
       flex: 1,
