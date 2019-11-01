@@ -16,3 +16,5 @@
 
 - featrues
   - push notifications
+  - checkbox
+  - touch slide options

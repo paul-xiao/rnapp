@@ -25,6 +25,7 @@ import PickerTest from './components/feature_test/PickerTest'
 import ProgressViewTest from './components/feature_test/UIProgressViewTest'
 import RefreshControlTest from './components/feature_test/RefreshControlTest'
 import FlexLayoutTest from './components/feature_test/FlexLayoutTest'
+import SwipeableFlatListTest from './components/feature_test/SwipeableFlatListTest'
 
 const apiDemoRoute = {
   ButtonTest: ButtonTest,
@@ -40,6 +41,7 @@ const apiDemoRoute = {
   ProgressViewTest: ProgressViewTest,
   RefreshControlTest: RefreshControlTest,
   FlexLayoutTest: FlexLayoutTest,
+  SwipeableFlatListTest: SwipeableFlatListTest,
   ViewTest: ViewTest,
   Camera: Camera,
   ImgPicker: ImgPicker,
