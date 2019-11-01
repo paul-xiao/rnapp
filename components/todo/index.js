@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end',//水平靠右
     justifyContent: 'center',//上下居中
-    width: 100,
-    borderRadius: 5,
-    elevation: 5,//漂浮的效果
+    width: 80
 
   },
   delete: {
@@ -131,7 +129,7 @@ export default TodoApp = () => {
            keyExtractor={index => index}
             //2创建侧滑菜单
           renderQuickActions={() => getQuickActions()}//创建侧滑菜单
-          maxSwipeDistance={80}//可展开（滑动）的距离
+          maxSwipeDistance={100}//可展开（滑动）的距离
           bounceFirstRowOnMount={false}//进去的时候不展示侧滑效果
          />
         </View>
