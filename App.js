@@ -3,29 +3,31 @@ import {
   createStackNavigator,
   createAppContainer
 } from "react-navigation";
-import HomeScreen from './screens/HomeScreen'
-import DetailScreen from './screens/DetailScreen'
-import LoginScreen from './screens/LoginScreen'
-import ApiDemoScreen from './screens/ApiDemoScreen'
-import AuthLoadingScreen from './screens/AuthLoadingScreen'
-import Camera from './components/feature_test/customizeCamera'
-import ImgPicker from './components/feature_test/imgPicker'
-import Post from './components/blog/Post'
-import ViewTest from './components/feature_test/ViewTest'
-import ActivityIndicatorTest from './components/feature_test/ActivityIndicatorTest'
-import ButtonTest from './components/feature_test/ButtonTest'
-import DatePickerIosTest from './components/feature_test/DatePickerIosTest'
-import FlatListTest from './components/feature_test/FlatListTest'
-import ImageTest from './components/feature_test/ImageTest'
-import InputAccessoryViewTest from './components/feature_test/InputAccessoryViewTest'
-import KeyboardAvoidingViewTest from './components/feature_test/KeyboardAvoidingViewTest'
-import MaskedViewTest from './components/feature_test/MaskedViewTest'
-import ModalTest from './components/feature_test/ModalTest'
-import PickerTest from './components/feature_test/PickerTest'
-import ProgressViewTest from './components/feature_test/UIProgressViewTest'
-import RefreshControlTest from './components/feature_test/RefreshControlTest'
-import FlexLayoutTest from './components/feature_test/FlexLayoutTest'
-import SwipeableFlatListTest from './components/feature_test/SwipeableFlatListTest'
+import { Provider } from 'react-redux'
+
+import HomeScreen from './src/screens/HomeScreen'
+import DetailScreen from './src/screens/DetailScreen'
+import LoginScreen from './src/screens/LoginScreen'
+import ApiDemoScreen from './src/screens/ApiDemoScreen'
+import AuthLoadingScreen from './src/screens/AuthLoadingScreen'
+import Camera from './src/components/feature_test/customizeCamera'
+import ImgPicker from './src/components/feature_test/imgPicker'
+import Post from './src/components/blog/Post'
+import ViewTest from './src/components/feature_test/ViewTest'
+import ActivityIndicatorTest from './src/components/feature_test/ActivityIndicatorTest'
+import ButtonTest from './src/components/feature_test/ButtonTest'
+import DatePickerIosTest from './src/components/feature_test/DatePickerIosTest'
+import FlatListTest from './src/components/feature_test/FlatListTest'
+import ImageTest from './src/components/feature_test/ImageTest'
+import InputAccessoryViewTest from './src/components/feature_test/InputAccessoryViewTest'
+import KeyboardAvoidingViewTest from './src/components/feature_test/KeyboardAvoidingViewTest'
+import MaskedViewTest from './src/components/feature_test/MaskedViewTest'
+import ModalTest from './src/components/feature_test/ModalTest'
+import PickerTest from './src/components/feature_test/PickerTest'
+import ProgressViewTest from './src/components/feature_test/UIProgressViewTest'
+import RefreshControlTest from './src/components/feature_test/RefreshControlTest'
+import FlexLayoutTest from './src/components/feature_test/FlexLayoutTest'
+import SwipeableFlatListTest from './src/components/feature_test/SwipeableFlatListTest'
 
 const apiDemoRoute = {
   ButtonTest: ButtonTest,
@@ -47,7 +49,7 @@ const apiDemoRoute = {
   ImgPicker: ImgPicker,
 }
 
-import TodoApp from './components/todo'
+import TodoApp from './src/components/todo'
 const AppDemo = {
   TodoApp: TodoApp
 }
@@ -72,6 +74,14 @@ const AppNavigator = createSwitchNavigator({
   initialRouteName: 'AuthLoading',
 });
 
-const app = createAppContainer(AppNavigator);
+const Navigation = createAppContainer(AppNavigator);
 
-export default app;
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
+    );
+  }
+}

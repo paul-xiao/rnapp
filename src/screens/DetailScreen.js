@@ -64,24 +64,6 @@ class DetailScreen extends React.Component {
         const photo = this.props.navigation.getParam('photo') || [];
         return (
             <Container style={styles.container}>
-            {/*<Grid style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>*/}
-
-                {/*<Row size={8}>*/}
-                    {/*{photo && photo.map(({ uri }) => (*/}
-                        {/*<View style={styles.galleryImageContainer} key={uri}>*/}
-                            {/*<Image source={{ uri }} style={styles.galleryImage} />*/}
-                        {/*</View>*/}
-                    {/*))}*/}
-                {/*</Row>*/}
-
-                {/*<Row size={1} style={{alignItems: "center", justifyContent: "center"}}>*/}
-                    {/*<Button*/}
-                        {/*title="Back to Home"*/}
-                        {/*style={styles.btn}*/}
-                        {/*onPress={() => this.props.navigation.navigate('Home', {name: 'HomeScreen'})}*/}
-                    {/*/>*/}
-                {/*</Row>*/}
-            {/*</Grid>*/}
                 <FlatList
                     data={formatData(Object.values(photo),3)}
                     numColumns={3}

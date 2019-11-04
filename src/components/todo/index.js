@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, Text } from 'native-base';
 import { SafeAreaView, StyleSheet,TextInput, TouchableOpacity, FlatList, SwipeableFlatList, TouchableHighlight } from 'react-native';
+import VisibilityFilter from './visibilityFilter';
+import { connect } from 'react-redux';
 const styles = StyleSheet.create({
     container: {
         flex:1,
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
     todoListItem: {
         width: 300,
         borderBottomColor: 'cyan',
-        backgroundColor: 'lightblue',
+        backgroundColor: '#FFF',
         borderBottomWidth: 1,
         paddingLeft: 10
     },
@@ -76,18 +78,20 @@ const styles = StyleSheet.create({
   quick: {
     backgroundColor: "#ff1d49",
     flex: 1,
-    alignItems: 'flex-end',//水平靠右
+    alignItems: 'center',//水平靠右
     justifyContent: 'center',//上下居中
-    width: 80
+    width: 80,
+    textAlign: 'center',
+    borderBottomColor: 'cyan',
+    borderBottomWidth: 1,
 
   },
   delete: {
-    color: "#d8fffa",
-    marginRight: 30
+    color: "#FFF"
   }
 })
 
-export default TodoApp = () => {
+TodoApp = () => {
     const [state, setState] = React.useState({
         data: [{
             title: 'test',
@@ -161,7 +165,14 @@ export default TodoApp = () => {
                     </TouchableOpacity>
                 </View>
                 <TodoList data={state.data} key={state.data.length}></TodoList>
+                <VisibilityFilter ></VisibilityFilter>
             </View>
       </SafeAreaView>
   )
 }
+
+const mapStateToProps = ({todos}) => {
+  console.log(todos)
+  return todos
+}
+export default connect(mapStateToProps)(TodoApp)
