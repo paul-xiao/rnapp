@@ -1,9 +1,13 @@
+import React from 'react';
 import {
   createSwitchNavigator,
   createStackNavigator,
   createAppContainer
 } from "react-navigation";
 import { Provider } from 'react-redux'
+import {store, persistor} from './src/store';
+import { PersistGate } from 'redux-persist/integration/react'
+
 
 import HomeScreen from './src/screens/HomeScreen'
 import DetailScreen from './src/screens/DetailScreen'
@@ -80,7 +84,9 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
+        <PersistGate persistor={persistor}>
         <Navigation />
+        </PersistGate>
       </Provider>
     );
   }

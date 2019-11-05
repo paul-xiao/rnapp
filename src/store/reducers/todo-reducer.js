@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from "../constants";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, TEST } from "../constants";
 
 const initial = {
   todos: []
@@ -7,21 +7,38 @@ const initial = {
 export default function(state = initial, action) {
   switch (action.type) {
     case ADD_TODO: {
-      const { id, title } = action.payload;
-      const todo = { id: id, title: title, completed: false}
+      const { payload } = action;
+      console.log(state)
       return {
         ...state,
-        todo
+        todos: [
+          ...state.todos,
+          payload
+        ]
       };
     }
     case TOGGLE_TODO: {
       const { id } = action.payload;
       return {
         ...state,
-        [id]: {
-            ...state[id],
-            completed: !state.byIds[id].completed
-          }
+        todos: [
+          ...state.todos.map(item => {
+            if(item.id === id){
+              item.completed = !item.completed
+            }
+            return item
+          })
+          
+        ] 
+      };
+    }
+    case REMOVE_TODO: {
+      const { id } = action.payload;
+      return {
+        ...state,
+        todos: [
+          ...state.todos.filter(item => item.id !== id)
+        ] 
       };
     }
     default:

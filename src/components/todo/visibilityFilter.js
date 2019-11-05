@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Text} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import {View, Text, TouchableOpacity} from 'react-native';
+import {changeFilter} from '../../store/actions/filter-action';
+import { connect } from 'react-redux';
+import {ALL, DONE, PENDING} from '../../store/constants';
+import { bindActionCreators } from 'redux';
 visibilityFilter.propTypes = {
     // props 类型
 };
 
 
-const filters = ['All', 'Pending', 'Done']
-function visibilityFilter(props) {
+const filters = [ALL, PENDING, DONE]
+function visibilityFilter({changeFilter}) {
     const [state, setState] = React.useState(0)                          
     slectItem = (index) => {
         setState(index)
+        changeFilter(filters[index])
     }
     const Item = filters.map((item,index) =>  <TouchableOpacity onPress={() => slectItem(index)} style={{borderWidth: state === index ? 1 : 0 }}><Text style={{padding: 15}}>{item}</Text></TouchableOpacity>)
     return (
@@ -22,4 +25,5 @@ function visibilityFilter(props) {
     );
 }
 
-export default visibilityFilter;
+const mapDispatchToProps = dispatch => bindActionCreators({ changeFilter }, dispatch);
+export default connect(null,mapDispatchToProps)(visibilityFilter);

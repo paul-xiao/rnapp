@@ -3,6 +3,11 @@ import { View, Text } from 'native-base';
 import { SafeAreaView, StyleSheet,TextInput, TouchableOpacity, FlatList, SwipeableFlatList, TouchableHighlight } from 'react-native';
 import VisibilityFilter from './visibilityFilter';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {addTodo, toggleTodo, removeTodo} from '../../store/actions/todo-action.js';
+import {ALL, DONE, PENDING} from '../../store/constants';
+
+
 const styles = StyleSheet.create({
     container: {
         flex:1,
@@ -91,36 +96,34 @@ const styles = StyleSheet.create({
   }
 })
 
-TodoApp = () => {
+TodoApp = ({todos, addTodo, toggleTodo, removeTodo}) => {
+  
     const [state, setState] = React.useState({
-        data: [{
-            title: 'test',
-            status: 1
-        }],
         title: ''
     })
     const updateTitle = React.useCallback((title) => {
-         setState( prevState => ({
-            ...prevState,
-            title: title
-        }))
+         setState({title: title})
      }, [state]);
-    const addTodo =  React.useCallback(() => {
-        const {title, data } = state
-        data.push({
-            title: title
-        })
-        setState( () => ({
-            title: '',
-            data : state.data
-        }))
+    const addTodos =  React.useCallback(() => {
+        addTodo(state.title)
+        setState({title: ''})
         
     }, [state]);
-    const Item =({ title, status }) => {
+
+    const removeTodos = (index) => {
+      try {
+        removeTodo(index)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const Item =({ title, completed, id }) => {
         return (
+          <TouchableOpacity onPress={() => toggleTodo(id)} activeOpacity="1">
           <View style={styles.todoListItem}>
-            <Text style={status !== 1 ? styles.todoListTitle : styles.todoListTitleDone }>{title}</Text>
+            <Text style={!completed ? styles.todoListTitle : styles.todoListTitleDone }>{title}</Text>
           </View>
+          </TouchableOpacity>
         );
       }
     const TodoList = ({data}) => {
@@ -129,10 +132,10 @@ TodoApp = () => {
            <SwipeableFlatList
            data={data}
            extraData={data}
-           renderItem={({ item }) => <Item title={item.title} status={item.status} />}
+           renderItem={({ item, index }) => <Item title={item.title} id={item.id} completed={item.completed} />}
            keyExtractor={index => index}
             //2创建侧滑菜单
-          renderQuickActions={() => getQuickActions()}//创建侧滑菜单
+          renderQuickActions={(target) => <QuickActions target={target}/>}//创建侧滑菜单
           maxSwipeDistance={100}//可展开（滑动）的距离
           bounceFirstRowOnMount={false}//进去的时候不展示侧滑效果
          />
@@ -141,10 +144,11 @@ TodoApp = () => {
     }
 
     //侧滑菜单渲染
-  const getQuickActions = () => {
+  const QuickActions = ({target}) => {
+    const { item } = target
     return <View style={styles.quickAContent}>
       <TouchableHighlight
-        onPress={() => alert("确认删除？")}
+        onPress={() => removeTodos(item.id)}
       >
         <View style={styles.quick}>
           <Text style={styles.delete}>删除</Text>
@@ -160,19 +164,35 @@ TodoApp = () => {
                 </Text>
                 <View style={styles.todo}> 
                     <TextInput style={styles.input}  placeholder="todos" value={state.title} onChangeText={(title) => updateTitle(title)}/>
-                    <TouchableOpacity style={styles.addBtn} onPress={addTodo}>
+                    <TouchableOpacity style={styles.addBtn} onPress={addTodos}>
                       <Text style={styles.btnTxt}>Add</Text>
                     </TouchableOpacity>
                 </View>
-                <TodoList data={state.data} key={state.data.length}></TodoList>
+                <TodoList data={todos} key={todos.length}></TodoList>
                 <VisibilityFilter ></VisibilityFilter>
             </View>
       </SafeAreaView>
   )
 }
 
-const mapStateToProps = ({todos}) => {
-  console.log(todos)
-  return todos
+
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case ALL:
+      return todos
+    case DONE:
+      return todos.filter(t => t.completed)
+    case PENDING:
+      return todos.filter(t => !t.completed)
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
 }
-export default connect(mapStateToProps)(TodoApp)
+const mapStateToProps = ({todos, filter}) => {
+  return {
+    todos: getVisibleTodos(todos.todos, filter.filter)
+  }
+}
+const mapDispatchToProps = dispatch => bindActionCreators({ addTodo, toggleTodo, removeTodo}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp)

@@ -18,3 +18,8 @@
   - push notifications
   - checkbox
   - touch slide options
+
+
+# reminder 
+
+- redux-persist

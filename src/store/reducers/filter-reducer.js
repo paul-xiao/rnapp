@@ -1,37 +1,16 @@
-import { ALL, PENDING, DONE } from "../constants";
+import { SET_FILTER } from "../constants";
 
 const initial = {
-  filter: 'All'
+  filter: 'ALL'
 };
 
 export default function(state = initial, action) {
   switch (action.type) {
-    case ALL: {
-      const { id, title } = action.payload;
-      const todo = { id: id, title: title, completed: false}
+    case SET_FILTER: {
+      const { filter } = action.payload;
       return {
         ...state,
-        todo
-      };
-    }
-    case PENDING: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        [id]: {
-            ...state[id],
-            completed: !state.byIds[id].completed
-          }
-      };
-    }
-    case DONE: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        [id]: {
-            ...state[id],
-            completed: !state.byIds[id].completed
-          }
+        filter
       };
     }
     default:
