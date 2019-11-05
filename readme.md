@@ -23,3 +23,6 @@
 # reminder 
 
 - redux-persist
+
+# bug
+- refresh, id reset
