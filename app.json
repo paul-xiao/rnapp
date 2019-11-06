@@ -25,6 +25,9 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.paul.xiao"
+    },
+    "android": {
+      "package": "com.paul.xiao"
     }
   }
 }

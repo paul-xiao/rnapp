@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity} from "react-native";
 import { Container } from "native-base";
-import Header from '../common/Header'
+import Header from '../../components/common/Header'
 import {ImagePicker, Permissions} from "expo";
 
 const styles = StyleSheet.create({

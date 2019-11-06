@@ -1,7 +1,7 @@
 # expo r -c
 
 
-# todo
+# Todo
 - prepare
     - react-native / react
     - nodejs
@@ -12,17 +12,17 @@
 
 
 
-# pending issues
+# Featrues
+  - [ ] push notifications
+  - [ ] checkbox
+  - [ ] Popup Dialog
+  - [ ] Actionsheet
+  - [ ] dropdown
+  - [x] touch slide options
 
-- featrues
-  - push notifications
-  - checkbox
-  - touch slide options
-
-
-# reminder 
+# Reminder 
 
 - redux-persist
 
-# bug
-- refresh, id reset
+# Bug
+- [x] refresh, id reset

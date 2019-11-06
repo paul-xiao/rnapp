@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container,Content} from 'native-base';
 import Header from '../components/common/Header';
-import FeatureList from '../components/feature_test/FeatureList';
+import FeatureList from '../projects/feature_test/FeatureList';
 export default class ApiDemoScreen extends Component {
     render() {
         const goBack = () => {
