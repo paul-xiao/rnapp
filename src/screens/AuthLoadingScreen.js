@@ -6,6 +6,8 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
+const client = require('socket.io-client');
+
 
 class AuthLoadingScreen extends React.Component {
     constructor(props) {
@@ -20,7 +22,12 @@ class AuthLoadingScreen extends React.Component {
         // screen will be unmounted and thrown away.
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     };
-
+   componentDidMount() {
+    const socket = client.connect('http://localhost:8080');
+    socket.on('connect', function (socket) {
+        console.log('Connected!');
+    });
+   }
     // Render any loading content that you like here
     render() {
         return (

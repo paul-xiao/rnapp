@@ -3,7 +3,9 @@ export const COLORS = {
     borderColor: '#727272',
     white: '#FFF',
     defult: '#ccc',
-    primary: '#2e9ee1'
+    primary: '#2e9ee1',
+    theme1: '#9013fe',
+    theme2: '#2dbe60',
 }
 
 export const PADDING = {

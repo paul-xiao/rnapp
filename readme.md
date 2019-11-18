@@ -19,6 +19,8 @@
   - [ ] Actionsheet
   - [ ] dropdown
   - [x] touch slide options
+  - [ ] socket.io/chat app
+  - [ ] news app
 
 # Reminder 
 
@@ -26,3 +28,5 @@
 
 # Bug
 - [x] refresh, id reset
+- [ ] TouchableOpacity  set flex: 1 not working
+- [ ] Socket.io on Expo https requires ?

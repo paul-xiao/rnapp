@@ -54,11 +54,16 @@ const apiDemoRoute = {
 }
 
 import TodoApp from './src/projects/todo'
+import AxelHome from './src/projects/axel/AxelHome'
+import PinAndShare from './src/projects/axel/PinAndShare'
+import Chat from './src/projects/chat/Chat'
 const AppDemo = {
-  TodoApp: TodoApp
+  AxelHome: AxelHome,
+  PinAndShare: PinAndShare,
+  Chat: Chat,
 }
 const AppStack = createStackNavigator({
-  Home: TodoApp,
+  Home: Chat,
   Details: DetailScreen,
   Post: Post,
   ApiDemoScreen: ApiDemoScreen,
