@@ -21,6 +21,7 @@
   - [x] touch slide options
   - [ ] socket.io/chat app
   - [ ] news app
+  - [ ] music app
 
 # Reminder 
 
