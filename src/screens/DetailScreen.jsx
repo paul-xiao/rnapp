@@ -42,7 +42,7 @@ const formatData = (data, numColumns) => {
     }
     return data;
 };
-class DetailScreen extends React.Component {
+export default class DetailScreen extends React.Component {
     static navigationOptions = () => {
         return {
             title: 'Detail',
@@ -75,4 +75,4 @@ class DetailScreen extends React.Component {
     }
 }
 
-export default  DetailScreen
+ 

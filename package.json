@@ -1,5 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "bin": {
+    "expo1": "node_modules/expo/bin/"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -8,11 +11,17 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-react": "^7.14.3",
     "expo": "^33.0.0",
     "expo-av": "~5.0.2",
+    "expo-font": "~5.0.1",
+    "expo-image-picker": "~5.0.2",
+    "expo-permissions": "~5.0.1",
     "firebase": "^6.1.1",
     "moment": "^2.24.0",
     "native-base": "^2.12.1",
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-easy-grid": "^0.2.1",
@@ -23,7 +32,12 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-eslint": "^10.0.3",
+    "babel-preset-expo": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react-hooks": "^2.3.0"
   },
   "private": true
 }

@@ -1,14 +1,24 @@
-import { StyleSheet } from 'react-native';
-import {COLORS, PADDING, FONTSIZE} from './variables'
+import { StyleSheet, Platform, StatusBar } from "react-native";
+import { COLORS, PADDING, FONTSIZE } from "./variables";
 
 export default StyleSheet.create({
+  SafeAreaView: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1
+  },
+  icon: {
+    color: Platform.OS === "android" ? COLORS.white : COLORS.primary
+  },
+  content: {
+    flex: 1
+  },
   container: {
     flex: 1
   },
   flexCenter: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   desc: {
     fontSize: FONTSIZE.medium,
@@ -17,12 +27,12 @@ export default StyleSheet.create({
     paddingTop: PADDING.top
   },
   button: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: COLORS.defult,
     padding: 10
   },
   buttonPrimary: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: COLORS.primary,
     padding: 10
   },
@@ -36,7 +46,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     opacity: 0.3,
-    backgroundColor: 'black',
+    backgroundColor: "black"
   },
   modalContent: {
     width: 270,
@@ -46,7 +56,7 @@ export default StyleSheet.create({
     borderBottomRightRadius: 0,
     backgroundColor: COLORS.primary,
     overflow: "hidden",
-    textalign: 'center'
+    textAlign: "center"
   },
   modalContentTxt: {
     color: COLORS.white
@@ -56,7 +66,7 @@ export default StyleSheet.create({
     borderRadius: 15,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: COLORS.defult,
     padding: 10
   }
