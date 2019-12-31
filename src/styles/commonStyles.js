@@ -9,6 +9,11 @@ export default StyleSheet.create({
   icon: {
     color: Platform.OS === "android" ? COLORS.white : COLORS.primary
   },
+  arrow: {
+    fontSize: 18,
+    color: "#777",
+    marginHorizontal: 10
+  },
   content: {
     flex: 1
   },
@@ -69,5 +74,44 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: COLORS.defult,
     padding: 10
+  },
+
+  // form
+
+  form: {
+    width: 300,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  form_title: {
+    textAlign: 'center',
+    paddingVertical: 15
+  },
+  form_item: {
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  form_item_btn: {
+    backgroundColor: 'lightblue',
+    color: '#FFF',
+    marginTop: 15,
+    borderRadius: 50,
+    height: 50,
+    width: 250,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  form_item_btn_text: {
+    color: '#FFF',
+  },
+  form_item_input: {
+    textAlign: 'left',
+    borderColor: '#f2f2f2',
+    borderWidth: 1,
+    flex: 1,
+    alignSelf: 'stretch',
+    marginBottom: 10,
+    paddingHorizontal: 10
   }
 });

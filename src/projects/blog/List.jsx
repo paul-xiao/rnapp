@@ -7,9 +7,7 @@ import * as Permissions from "expo-permissions";
 import commonStyles from "../../styles/commonStyles";
 import Header from "../../components/common/Header";
 import Footer from "../../components/common/Footer";
-const BUTTONS = ["拍摄", "从相册选取", "取消"];
-const DESTRUCTIVE_INDEX = 4;
-const CANCEL_INDEX = 2;
+import { BUTTONS, DESTRUCTIVE_INDEX, CANCEL_INDEX } from '../../config/actionSheet'
 const options = {
   allowsEditing: true
 };

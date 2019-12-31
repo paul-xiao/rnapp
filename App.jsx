@@ -39,7 +39,10 @@ import AxelHome from "./src/projects/axel/AxelHome";
 import PinAndShare from "./src/projects/axel/PinAndShare";
 import Chat from "./src/projects/chat/Chat";
 import List from "./src/projects/blog/List";
-import Profile from "./src/screens/ProfileScreen";
+import Profile from "./src/projects/user/ProfileScreen";
+import ProfileEdit from "./src/projects/user/ProfileEdit";
+import ProfileDetail from "./src/projects/user/ProfileDetail";
+import SignUpScreen from "./src/screens/SignUpScreen";
 
 const apiDemoRoute = {
   ButtonTest,
@@ -68,10 +71,14 @@ const AppDemo = {
 };
 const AppStack = createStackNavigator(
   {
-    Home: Profile,
+    Home: List,
+    Profile,
+    ProfileEdit,
+    ProfileDetail,
     Details: DetailScreen,
     Post,
     List,
+    SignUpScreen,
     ApiDemoScreen,
     ...apiDemoRoute,
     ...AppDemo

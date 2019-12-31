@@ -5,10 +5,14 @@ const AppFooter = ({ navigation }) => (
   <Footer>
     <FooterTab>
       <Button vertical onPress={() => navigation.navigate("List")}>
-        <Icon name="list" />
-        <Text>Posts</Text>
+        <Icon name="home" />
+        <Text>Home</Text>
       </Button>
-      <Button vertical onPress={() => navigation.navigate("Home")}>
+      <Button vertical onPress={() => navigation.navigate("List")}>
+        <Icon name="search" />
+        <Text>Search</Text>
+      </Button>
+      <Button vertical onPress={() => navigation.navigate("Profile")}>
         <Icon name="person" />
         <Text>Profile</Text>
       </Button>

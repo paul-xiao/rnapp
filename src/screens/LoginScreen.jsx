@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 50,
   },
+  button_signup: {
+    paddingVertical: 15,
+  },
+  button_signup_text: {
+    color: 'lightgreen'
+  }
 });
 
 class LoginScreen extends React.Component {
@@ -113,6 +119,9 @@ class LoginScreen extends React.Component {
         />
         <TouchableOpacity style={styles.button} onPress={this.onLogin}>
           <Text style={styles.buttonText}> Sign in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button_signup} onPress={() => this.props.navigation.navigate('SignUpScreen')}>
+          <Text style={styles.button_signup_text}> Sign Up</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     );
