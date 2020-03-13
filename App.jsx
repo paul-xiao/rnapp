@@ -1,48 +1,48 @@
-import React from "react";
+/* eslint-disable global-require */
+import React from 'react';
 import {
   createSwitchNavigator,
   createStackNavigator,
-  createAppContainer
-} from "react-navigation";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./src/store";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
-import { Root } from "native-base";
+  createAppContainer,
+} from 'react-navigation';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+import { Root } from 'native-base';
+import { store, persistor } from './src/store';
 
-import HomeScreen from "./src/screens/HomeScreen";
-import DetailScreen from "./src/screens/DetailScreen";
-import LoginScreen from "./src/screens/LoginScreen";
-import ApiDemoScreen from "./src/screens/ApiDemoScreen";
-import AuthLoadingScreen from "./src/screens/AuthLoadingScreen";
-import Camera from "./src/projects/feature_test/customizeCamera";
-import ImgPicker from "./src/projects/feature_test/imgPicker";
-import Post from "./src/projects/blog/Post";
-import ViewTest from "./src/projects/feature_test/ViewTest";
-import ActivityIndicatorTest from "./src/projects/feature_test/ActivityIndicatorTest";
-import ButtonTest from "./src/projects/feature_test/ButtonTest";
-import DatePickerIosTest from "./src/projects/feature_test/DatePickerIosTest";
-import FlatListTest from "./src/projects/feature_test/FlatListTest";
-import ImageTest from "./src/projects/feature_test/ImageTest";
-import InputAccessoryViewTest from "./src/projects/feature_test/InputAccessoryViewTest";
-import KeyboardAvoidingViewTest from "./src/projects/feature_test/KeyboardAvoidingViewTest";
-import MaskedViewTest from "./src/projects/feature_test/MaskedViewTest";
-import ModalTest from "./src/projects/feature_test/ModalTest";
-import PickerTest from "./src/projects/feature_test/PickerTest";
-import ProgressViewTest from "./src/projects/feature_test/UIProgressViewTest";
-import RefreshControlTest from "./src/projects/feature_test/RefreshControlTest";
-import FlexLayoutTest from "./src/projects/feature_test/FlexLayoutTest";
-import SwipeableFlatListTest from "./src/projects/feature_test/SwipeableFlatListTest";
+import DetailScreen from './src/screens/DetailScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import ApiDemoScreen from './src/screens/ApiDemoScreen';
+import AuthLoadingScreen from './src/screens/AuthLoadingScreen';
+import Camera from './src/projects/feature_test/customizeCamera';
+import ImgPicker from './src/projects/feature_test/imgPicker';
+import Post from './src/projects/blog/Post';
+import ViewTest from './src/projects/feature_test/ViewTest';
+import ActivityIndicatorTest from './src/projects/feature_test/ActivityIndicatorTest';
+import ButtonTest from './src/projects/feature_test/ButtonTest';
+import DatePickerIosTest from './src/projects/feature_test/DatePickerIosTest';
+import FlatListTest from './src/projects/feature_test/FlatListTest';
+import ImageTest from './src/projects/feature_test/ImageTest';
+import InputAccessoryViewTest from './src/projects/feature_test/InputAccessoryViewTest';
+import KeyboardAvoidingViewTest from './src/projects/feature_test/KeyboardAvoidingViewTest';
+import MaskedViewTest from './src/projects/feature_test/MaskedViewTest';
+import ModalTest from './src/projects/feature_test/ModalTest';
+import PickerTest from './src/projects/feature_test/PickerTest';
+import ProgressViewTest from './src/projects/feature_test/UIProgressViewTest';
+import RefreshControlTest from './src/projects/feature_test/RefreshControlTest';
+import FlexLayoutTest from './src/projects/feature_test/FlexLayoutTest';
+import SwipeableFlatListTest from './src/projects/feature_test/SwipeableFlatListTest';
 
-import AxelHome from "./src/projects/axel/AxelHome";
-import PinAndShare from "./src/projects/axel/PinAndShare";
-import Chat from "./src/projects/chat/Chat";
-import List from "./src/projects/blog/List";
-import Profile from "./src/projects/user/ProfileScreen";
-import ProfileEdit from "./src/projects/user/ProfileEdit";
-import ProfileDetail from "./src/projects/user/ProfileDetail";
-import SignUpScreen from "./src/screens/SignUpScreen";
+import AxelHome from './src/projects/axel/AxelHome';
+import PinAndShare from './src/projects/axel/PinAndShare';
+import Chat from './src/projects/chat/Chat';
+import List from './src/projects/blog/List';
+import Profile from './src/projects/user/ProfileScreen';
+import ProfileEdit from './src/projects/user/ProfileEdit';
+import ProfileDetail from './src/projects/user/ProfileDetail';
+import SignUpScreen from './src/screens/SignUpScreen';
 
 const apiDemoRoute = {
   ButtonTest,
@@ -61,13 +61,13 @@ const apiDemoRoute = {
   SwipeableFlatListTest,
   ViewTest,
   Camera,
-  ImgPicker
+  ImgPicker,
 };
 
 const AppDemo = {
   AxelHome,
   PinAndShare,
-  Chat
+  Chat,
 };
 const AppStack = createStackNavigator(
   {
@@ -81,24 +81,24 @@ const AppStack = createStackNavigator(
     SignUpScreen,
     ApiDemoScreen,
     ...apiDemoRoute,
-    ...AppDemo
+    ...AppDemo,
   },
   {
-    headerMode: "none"
-  }
+    headerMode: 'none',
+  },
 );
 const AuthStack = createStackNavigator({
-  SignIn: LoginScreen
+  SignIn: LoginScreen,
 });
 const AppNavigator = createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
     App: AppStack,
-    Auth: AuthStack
+    Auth: AuthStack,
   },
   {
-    initialRouteName: "AuthLoading"
-  }
+    initialRouteName: 'AuthLoading',
+  },
 );
 
 const Navigation = createAppContainer(AppNavigator);
@@ -112,8 +112,8 @@ export default class App extends React.Component {
 
   async componentWillMount() {
     await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
     });
     this.setState({ loading: false });
   }

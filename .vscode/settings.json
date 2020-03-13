@@ -1,8 +1,39 @@
 {
-  "editor.formatOnSave": true,
-  "files.exclude": {
-    "**/*.git": true,
-    "**/*.expo": true,
-    "**/*.DS_Store": true
-  }
+  "git.ignoreLegacyWarning": true,
+  "editor.fontSize": 14,
+  //eslint 代码自动检查相关配置
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "emmet.triggerExpansionOnTab": true,
+  "eslint.options": {
+    "extensions": [".js", ".vue"]
+  },
+  "eslint.validate": [
+    "javascriptreact",
+    "vue",
+    "javascript",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    "html",
+    {
+      "language": "html",
+      "autoFix": true
+    }
+  ],
+  "gitlens.advanced.messages": {
+    "suppressGitVersionWarning": true
+  },
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false
 }
